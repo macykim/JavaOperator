@@ -1,4 +1,4 @@
-package whileLoop;
+package loop;
 /*
  * @ Date: 2015.07.09
  * @ Author: Me
