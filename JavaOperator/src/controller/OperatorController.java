@@ -6,6 +6,7 @@ import condition.ArithmeticCalc;
 import condition.CalcAvg;
 import condition.ManOrWoman;
 import condition.SwitchAvg;
+import loop.EvenOddSum;
 
 /*
  * @ Date: 2015.07.09
@@ -32,6 +33,8 @@ public class OperatorController {
 		ManOrWoman sex = new ManOrWoman();
 		sex.ssn(); // ssn() -> 이 파트는 원 클래스의 public void 메소드 이름 
 		
-		
+		// 5) 20150713 홀수/짝수끼리의 덧셈
+		EvenOddSum evenOddSum = new EvenOddSum();
+		evenOddSum.calc(); // 객체가 메소드를 호출한다.
 	}
 }
