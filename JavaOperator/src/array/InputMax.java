@@ -33,7 +33,7 @@ public class InputMax {
 		
 		for (int i = 0; i < arr.length; i++) {
 			arr[i] = scanner.nextInt();
-			if (arr[i]>max){max = arr[i];}
+			if (arr[i] > max) {max = arr[i];}
 		}
 			
 		System.out.println("가장 큰 수는 " + max + "입니다.");
