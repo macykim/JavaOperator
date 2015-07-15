@@ -10,16 +10,27 @@ public class PayBean {
 	// Bean 클랙스라면 멤버필드 영역과 멤버메소드 영역으로 나눈다.
 	
 	private String name; // 멤버필드 변수는 초기화를 하지 않는다***
-	private int salary, tax, wage;
+	private int salary, tax; //, wage; <- setter는 private으로 선언하지 않아도 결과는 똑같음
 	
 	// 멤버메소드 영역 시작
 		// 스캐너로 받는 것은 무조건 setter
 			public void setName(String name) {
-				this.name = name;}
+				this.name = name;}			
+			public String getName() {
+				return name;
+			}
+			
 			public void setSalary(int salary) {
-				this.salary = salary;}
+				this.salary = salary;}			
+			public int getSalary() {
+				return salary;
+			}
+			
 			public void setTax(int tax) {
 				this.tax = tax;}
+			public int getTax() {
+				return tax;
+			}
 			
 			// this는 이 클래스 내부에 있는 ~~~의 의미
 			
@@ -44,8 +55,5 @@ public class PayBean {
 						+ "월급: " + this.salary + "만원\n"
 						+ "세금: " + this.tax + "만원\n"
 		  // 선생님 답: + "세금: " + this.getTax() + "만원\n"
-						+ "실급여: " + this.getWage() + "만원\n");}
-		
-		
-		
+						+ "실급여: " + this.getWage() + "만원\n");}		
 }

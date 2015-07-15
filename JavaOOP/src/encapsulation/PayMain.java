@@ -40,6 +40,8 @@ public class PayMain {
 		payBean.setSalary(salary);
 		payBean.setTax(tax);
 		
+		System.out.println(payBean.getName() + "님 반갑습니다.");
+		
 		System.out.println(payBean.toString());
 				
 				
