@@ -14,7 +14,7 @@ public class CardGame {
 		// getter에서 문재해결 패턴
 		// 제일 먼저 리턴타입을 카피
 	
-	public CardGame(CardGame game1, CardGame game2) {
+	public CardGame(CardBean3 game1, CardBean3 game2) {
 		String winner = "";
 		if (game1.getNum() > game2.getNum()) {winner = game1.getName() + " Win!";}
 		else if (game2.getNum() > game1.getNum()) {winner = game2.getName() + " Win!";}
