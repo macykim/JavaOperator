@@ -4,23 +4,26 @@ import java.util.Scanner;
 
 public class BankMain {
 	public static void main(String[] args) {
-		String name = "";
-		int old = 0, in = 0, out = 0, money = 0;
 		Scanner scanner = new Scanner(System.in);
+		/* 
+		 * 생성자가 가지는 기능
+		   1) 객체를 만드는 기능
+		   2) setter 기능
+		   3) 객체가 만들어지는데 필수적인 요소가 주어지지 않으면 아예 생성을 막는 기능 ==> 제약
+		 */
+		System.out.println("통장주 이름: ");		
+		BankBook bankBook = new BankBook(scanner.next());
 		
-		System.out.println("소유주의 이름을 입력하세요.");				
-		name = new scanner	
-		System.out.println("원금을 입력하세요.");
-		System.out.println("입금액을 입력하세요.");
-		System.out.println("출금액을 입력하세요.");
+		System.out.println("입금: ");		
+		bankBook.deposit(scanner.nextInt());
 		
+		System.out.println("출금: ");
+		bankBook.withdraw(scanner.nextInt());
+			
+		System.out.println("입금: ");		
+		bankBook.deposit(scanner.nextInt());
+		System.out.println(bankBook.toString());
 		
-		
-		// 인터넷 망을 타고 데이터 값이 게임회사로 들어옴				
-		CardGame game = new CardGame(hong, kim);
-		
-		// 사용자가 결과 화면을 보는 중...
-		System.out.println(game.toString()); 
 		
 	}
 }

@@ -21,7 +21,7 @@ public class CardBean3 {
 	public CardBean3(String name) {
 		// setter 역할을 겸용하는 생성자
 		this.name1 = name;
-		this.num1 = (int) ((Math.random()*13)+1);;}
+		this.num1 = (int) ((Math.random()*13)+1);}
 	// TODO Auto-generated constructor stub
 
 	// 디폴트 생성자는 개발자가 직접 만들지 않아도
