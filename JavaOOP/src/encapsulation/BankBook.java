@@ -45,7 +45,7 @@ public class BankBook implements Account{
 		// 위치: 필드 ==> {인변 상수, 클래스변수} < 멤변
 
 /*============================================= 멤버필드 =============================================*/
-	private static String BANK;
+	public static String BANK;
 		// 이름이 대문자 일 경우 "고정된 값 혹은 스태틱" 이구나 하고 assume함.
 	private int bankbookNo;
 	private String name;
@@ -115,8 +115,6 @@ public class BankBook implements Account{
 	public void deposit(int money){
 		if (money <= 0) {msg = "입금액은 0보다 커야 합니다.";}
 			else {this.money += money;}
-		
-		
 		
 	}
 	
