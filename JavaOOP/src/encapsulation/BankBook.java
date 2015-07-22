@@ -5,7 +5,7 @@ package encapsulation;
  * @ Story: 통장
  */
 
-import Abstraction.Account;
+import abstraction.Account;
 
 /* 
  * OOP에서 클래스는 현실 세계를 그대로 카피하려고 한다.
