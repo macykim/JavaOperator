@@ -6,8 +6,10 @@ package bank;
 */
 
 public interface Account {
+	public void setPass(int pass); // 비밀번호
 	public void deposit(int money); // 예금
 	public abstract void withdraw(int money); // 출금
+	public String showAccount(); // 계좌출력
 	
 	
 }
