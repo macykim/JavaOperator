@@ -65,18 +65,22 @@ public class Bank implements BankRole{
 	// 계좌검색 (이름 사용) -> 리턴결과: 계좌 갯수
 	@Override
 	public BankBook[] searchAccountByName(String ownerName) {		
-		BankBook[] accounts = null;
+		//BankBook[] accounts = null;
 		int tempCount = this.searchCountByName(ownerName);
 			// searchAccountByName() 이 메소드를 호출하면, 자동으로
 			// 밑에 있는 searchCountByName()을 먼저 호출하라는 의미
-		if (tempCount == 0) {
-			// 만약 조회하는 사람의 통장이 하나도 없다면,
-			return null;}
+		if (tempCount == 0) {return null;}	
+			// 위처럼 필터링을 하는 이유는, 본 알고리즘을 타기 전에 필요없는
+			// 상태라면 알고리즘을 호출하지 않기 위해서이다. 그렇지 않으면
+			// 자원(리소스: e.g. 메모리, DB)의 낭비를 초래한다.
+		BankBook[] accounts = new BankBook[tempCount];
+		tempCount = 0;
+			// 0으로 초기화 시켜서 배열의 인덱스로 사용해야 함				
 		for (int i = 0; i < this.count; i++)
-			{if(bankBookList[i].getName().equals(ownerName))
-				{accounts[tempCount] = bankBookList[i];
+			{if(bankBookList[i].getName().equals(ownerName)) {				
+				accounts[tempCount] = bankBookList[i];
 				tempCount++;}
-		}
+			}
 		return accounts;}
 
 	// 계좌검색 (이름 사용) -> 리턴결과: 숫자
@@ -94,25 +98,33 @@ public class Bank implements BankRole{
 	// 계좌해지 -> 리턴결과: true or false
 	@Override
 	public boolean closeAccount(String accountNo) {
-		boolean flag = false;
+		boolean closeOk = false;
 			// flag은 삭제가 성공적으로 이루어지면 true를 리턴하고,
-			// 삭제할 것이 없으면 false를 리턴한다.			
-		for (int i = 0; i < this.count; i++) {
+			// 삭제할 것이 없으면 false를 리턴한다.		
+		
+		BankBook bankBook = this.searchAccountByAccountNo(accountNo);
+			// 필터링에서는 if-else 구문을 사용하지 않고 if문을 사용한다.
+		if (bankBook == null) {
+			System.out.println("해당 계좍 존재하지 않습니다.");
+			return closeOk;}
+		
 			int searchAccountNo = Integer.parseInt(accountNo);
 				// String으로 들어온 값을 숫자로 바꿔서 비교
-			if (bankBookList[i].getBankbookNo()==searchAccountNo)
-				{flag = true;
-				// j = i 로 바꾼 이유는, 예를 들면, 홍길동의 계좌가가
-				// 은행 전체 계좌의 50번째라고 가정했을 때, 내부 for 문에서
-				// 다시 처음 0부터 회전하지 않고 홍길동의 계좌가 있는 인덱스
-				// 번호부터 뒤에 있는 계좌 번호를 덮어쓰는 방식으로 진행한 후
-				// 맨 마지막 인덱스 번호를 제거하면 전체 계좌가 100개가 있는
-				// 상황이라면, 홍길동이 삭제된 후, 전체 계좌수는 99개가 될 것이다.
-				// 그래서, this.count-1을 해 주었다.
-				for (int j = i; j < this.count-1; j++)
-				{bankBookList[i] = bankBookList[j+1];}
-				count--;}
+			for (int i = 0; i < this.count; i++) {
+				if (bankBookList[i].getBankbookNo()==searchAccountNo) {
+					closeOk = true;				
+					for (int j = i; j < this.count-1; j++)
+						// j = i 로 바꾼 이유는, 예를 들면, 홍길동의 계좌가가
+						// 은행 전체 계좌의 50번째라고 가정했을 때, 내부 for 문에서
+						// 다시 처음 0부터 회전하지 않고 홍길동의 계좌가 있는 인덱스
+						// 번호부터 뒤에 있는 계좌 번호를 덮어쓰는 방식으로 진행한 후
+						// 맨 마지막 인덱스 번호를 제거하면 전체 계좌가 100개가 있는
+						// 상황이라면, 홍길동이 삭제된 후, 전체 계좌수는 99개가 될 것이다.
+						// 그래서, this.count-1을 해 주었다.
+					{bankBookList[i] = bankBookList[j+1];}
+					count--;
+					closeOk = true;}
 		}
-		return flag;
+		return closeOk;
 	}	
 }
