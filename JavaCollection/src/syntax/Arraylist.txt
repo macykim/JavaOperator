@@ -33,15 +33,3 @@
 			break;
 		}
 	}	
-
-[ArrayList]
-1. 선언:
-	List<String> list = new ArrayList<String> ();
-2. 길이:
-	list.size();
-3. 추가:
-	list.add("샘플");
-4. 삭제:
-	list.remove(1) // 인덱스
-5. 검색/찾기:
-	list.contains("샘플")
