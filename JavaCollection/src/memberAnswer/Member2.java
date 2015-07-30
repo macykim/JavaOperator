@@ -1,4 +1,9 @@
 package memberAnswer;
+/*
+ * @ Date: 2015.07.29
+ * @ Author: 김청명
+ * @ Story: main이 있음... getter/setter가 있음
+ */
 
 public class Member2 {
 	private String userid, password, name, address;
